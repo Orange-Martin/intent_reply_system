@@ -312,7 +312,8 @@ export function PolicyReviewModal({ onClose }: { onClose: () => void }) {
                       {section.type === 'suggestions' && (
                         <button
                           onClick={() => handleAIGenerate(section.id)}
-                          className="flex items-center gap-[4px] px-[8px] py-[4px] bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white text-[11px] rounded-[4px] hover:shadow-lg transition-shadow"
+                          className="flex items-center gap-[4px] px-[8px] py-[4px] text-white text-[11px] rounded-[4px] hover:shadow-lg transition-shadow"
+                          style={{ background: 'linear-gradient(to right, #667eea, #764ba2)' }}
                         >
                           <Sparkles className="w-3 h-3" />
                           AI生成
