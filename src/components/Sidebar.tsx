@@ -35,7 +35,7 @@ function SearchIcon() {
   );
 }
 
-export function Sidebar() {
+export function Sidebar({ activePage, onPageChange }: { activePage: string; onPageChange: (page: string) => void }) {
   return (
     <div className="bg-[#1a1a1a] flex flex-col h-full w-[184px]">
       {/* 顶部标题 */}
@@ -49,20 +49,28 @@ export function Sidebar() {
         <p className="flex-[1_0_0] text-[#a0a0a0] text-[12px] leading-[22px]">请输入</p>
       </div>
 
-      {/* 菜单项 */}
-      <MenuItem label="售后后台" />
-      <MenuItem label="新续期管理后台" />
-      <MenuItem label="营销工具" />
-      <MenuItem label="研发专用" />
+      {/* 运营后台 - 展开 */}
       <MenuItemExpanded label="运营后台">
-        <SubMenuItem label="朋友圈助手" />
-        <SubMenuItem label="智能体话术配置" active />
+        <SubMenuItem 
+          label="智能体话术配置" 
+          active={activePage === 'intent-config'} 
+          onClick={() => onPageChange('intent-config')}
+        />
       </MenuItemExpanded>
-      <MenuItem label="触达系统" />
+
+      {/* CRM 电联 - 展开 */}
+      <MenuItemExpanded label="电联CRM">
+        <SubMenuItem 
+          label="客户管理" 
+          active={activePage === 'customer-management'} 
+          onClick={() => onPageChange('customer-management')}
+        />
+      </MenuItemExpanded>
     </div>
   );
 }
 
+// @ts-ignore
 function MenuItem({ label }: { label: string }) {
   return (
     <div className="flex gap-[8px] h-[40px] items-center px-[16px] py-[4px] cursor-pointer hover:bg-[#2a2a2a]">
@@ -84,9 +92,12 @@ function MenuItemExpanded({ label, children }: { label: string; children: React.
   );
 }
 
-function SubMenuItem({ label, active }: { label: string; active?: boolean }) {
+function SubMenuItem({ label, active, onClick }: { label: string; active?: boolean; onClick?: () => void }) {
   return (
-    <div className={`flex h-[40px] items-center pl-[32px] pr-[16px] py-[4px] ${active ? 'bg-[#409eff]' : 'bg-black hover:bg-[#2a2a2a]'} cursor-pointer`}>
+    <div 
+      onClick={onClick}
+      className={`flex h-[40px] items-center pl-[32px] pr-[16px] py-[4px] ${active ? 'bg-[#409eff]' : 'bg-black hover:bg-[#2a2a2a]'} cursor-pointer`}
+    >
       <p className={`flex-[1_0_0] text-[12px] leading-[22px] ${active ? 'text-white font-semibold' : 'text-[#a0a0a0]'}`}>{label}</p>
     </div>
   );

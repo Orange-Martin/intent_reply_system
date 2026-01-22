@@ -19,11 +19,11 @@ function ListCollapseIcon() {
   );
 }
 
-export function TopBar() {
+export function TopBar({ title }: { title?: string }) {
   return (
     <div className="flex gap-[12px] h-[36px] items-center px-[16px] py-0 border-b border-[#eee]">
       <ListCollapseIcon />
-      <p className="flex-1 text-[12px] leading-[20px] text-black">运营后台/微信客服管理</p>
+      <p className="flex-1 text-[12px] leading-[20px] text-black">{title || '运营后台/微信客服管理'}</p>
       <p className="text-[12px] leading-[20px] text-black">
         <span>欢迎您：</span>
         <span className="font-medium">martin</span>
