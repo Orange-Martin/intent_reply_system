@@ -302,11 +302,22 @@ export function PolicyReviewModal({ onClose }: { onClose: () => void }) {
 
                 {sections.map((section, index) => (
                   <div key={section.id} className="border border-[#eee] rounded-[8px] p-[16px] bg-white">
-                    <div className="flex items-center gap-[8px] mb-[12px]">
-                      <div className="w-[24px] h-[24px] rounded-full bg-[#409eff] text-white flex items-center justify-center text-[12px]">
-                        {index + 1}
+                    <div className="flex items-center justify-between mb-[12px]">
+                      <div className="flex items-center gap-[8px]">
+                        <div className="w-[24px] h-[24px] rounded-full bg-[#409eff] text-white flex items-center justify-center text-[12px]">
+                          {index + 1}
+                        </div>
+                        <h4 className="text-[12px] text-black font-medium">{section.title}</h4>
                       </div>
-                      <h4 className="text-[12px] text-black font-medium">{section.title}</h4>
+                      {section.type === 'suggestions' && (
+                        <button
+                          onClick={() => handleAIGenerate(section.id)}
+                          className="flex items-center gap-[4px] px-[8px] py-[4px] bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white text-[11px] rounded-[4px] hover:shadow-lg transition-shadow"
+                        >
+                          <Sparkles className="w-3 h-3" />
+                          AI生成
+                        </button>
+                      )}
                     </div>
                     <div className="relative">
                       <textarea
@@ -315,15 +326,6 @@ export function PolicyReviewModal({ onClose }: { onClose: () => void }) {
                         className="w-full h-[120px] px-[12px] py-[8px] border border-[#eee] rounded-[4px] text-[12px] outline-none resize-none focus:border-[#409eff]"
                         placeholder={`请输入${section.title}内容`}
                       />
-                      {section.type === 'suggestions' && (
-                        <button
-                          onClick={() => handleAIGenerate(section.id)}
-                          className="absolute top-[8px] right-[8px] flex items-center gap-[4px] px-[8px] py-[4px] bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white text-[11px] rounded-[4px] hover:shadow-lg transition-shadow"
-                        >
-                          <Sparkles className="w-3 h-3" />
-                          AI生成
-                        </button>
-                      )}
                     </div>
                   </div>
                 ))}
