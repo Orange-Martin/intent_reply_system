@@ -161,88 +161,9 @@ export function PolicyReviewModal({ onClose }: { onClose: () => void }) {
           </div>
           <div className="flex-1 overflow-auto p-[20px] flex justify-center">
             <div 
-              className="w-[375px] bg-gradient-to-br from-[#667eea] to-[#764ba2] rounded-[12px] overflow-hidden shadow-lg h-fit origin-top"
-              style={{ transform: 'scale(0.75)' }}
+              className="w-full max-w-[320px] h-fit origin-top shrink-0"
             >
-              {/* 标题区 */}
-              <div className="p-[24px] text-white">
-                <div className="text-[20px] mb-[8px]">2025年年度保单检视报告</div>
-                <div className="text-[12px] opacity-80">为您量身定制</div>
-              </div>
-
-              {/* 内容区 */}
-              <div className="bg-white p-[20px] rounded-t-[12px]">
-                {/* 1. 开场问候语 */}
-                <div className="mb-[16px] p-[16px] bg-[#f9f9f9] rounded-[12px] border border-[#f0f0f0]">
-                  <div className="text-[13px] text-[#444] leading-[1.8] whitespace-pre-line font-medium">
-                    {sections.find(s => s.type === 'greeting')?.content}
-                  </div>
-                </div>
-
-                {/* 2. 已投保成员 */}
-                <div className="mb-[20px]">
-                  <div className="text-[15px] text-[#333] mb-[10px] flex items-center gap-[6px] font-bold">
-                    <div className="w-[4px] h-[16px] bg-[#409eff] rounded-full"></div>
-                    已投保成员
-                  </div>
-                  <div className="text-[13px] text-[#555] leading-[1.8] whitespace-pre-line pl-[12px]">
-                    {sections.find(s => s.type === 'members')?.content}
-                  </div>
-                </div>
-
-                {/* 3. 已拥有保障情况 */}
-                <div className="mb-[20px]">
-                  <div className="text-[15px] text-[#333] mb-[10px] flex items-center gap-[6px] font-bold">
-                    <div className="w-[4px] h-[16px] bg-[#409eff] rounded-full"></div>
-                    已拥有保障情况
-                  </div>
-                  <div className="text-[13px] text-[#555] mb-[10px] pl-[12px]">
-                    {sections.find(s => s.type === 'coverage')?.content}
-                  </div>
-                  
-                  {/* 已投保险种 */}
-                  <div className="space-y-[8px] pl-[12px]">
-                    {insuranceProducts.filter(p => p.enabled).map((product) => (
-                      <div key={product.id} className="flex items-center justify-between p-[12px] bg-[#f0f9ff] rounded-[8px] border border-[#409eff]/20 shadow-sm">
-                        <div className="text-[13px] text-[#333] font-medium">{product.name}</div>
-                        <div className="w-[6px] h-[6px] rounded-full bg-[#00d4aa] shadow-[0_0_4px_#00d4aa]"></div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* 线下保单 */}
-                  {offlinePolicies.length > 0 && (
-                    <div className="mt-[12px] pl-[12px]">
-                      <div className="text-[12px] text-[#888] mb-[8px] font-medium">线下保单</div>
-                      {offlinePolicies.map((policy) => (
-                        <div key={policy.id} className="mb-[8px] p-[12px] bg-[#fafafa] rounded-[8px] border border-[#eee] shadow-sm">
-                          <div className="text-[13px] text-[#333] mb-[4px] font-medium">{policy.productName}</div>
-                          <div className="text-[11px] text-[#666]">
-                            {policy.policyHolder} | 保额：{policy.coverageAmount} | {policy.paymentYears}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* 4. 保障建议 */}
-                <div className="mb-[16px]">
-                  <div className="text-[15px] text-[#333] mb-[10px] flex items-center gap-[6px] font-bold">
-                    <div className="w-[4px] h-[16px] bg-[#409eff] rounded-full"></div>
-                    保障建议
-                  </div>
-                  <div className="p-[14px] bg-gradient-to-r from-[#f0f9ff] to-[#f9f0ff] rounded-[10px] border border-[#409eff]/20 shadow-sm">
-                    <div className="flex items-center gap-[6px] mb-[8px]">
-                      <Sparkles className="w-4 h-4 text-[#667eea]" />
-                      <span className="text-[12px] text-[#667eea] font-bold">AI智能建议</span>
-                    </div>
-                    <div className="text-[13px] text-[#555] leading-[1.8] whitespace-pre-line">
-                      {sections.find(s => s.type === 'suggestions')?.content}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <img src="https://i.imgs.ovh/2026/01/22/yg8cqU.png" alt="保单检视报告预览" className="w-full h-auto rounded-[12px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)]" />
             </div>
           </div>
         </div>
